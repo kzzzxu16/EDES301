@@ -55,6 +55,11 @@ Error conditions:
 # NOTE - Add import statements to allow access to Python library functions
 # NOTE - Hint:  Look at  https://docs.python.org/3/library/operator.html
 import operator
+
+try:
+    input = raw_input
+except NameError:
+    pass
 # ------------------------------------------------------------------------
 # Constants
 # ------------------------------------------------------------------------
@@ -67,14 +72,16 @@ import operator
 
 # NOTE - Global variable to map an operator string (e.g. "+") to 
 # NOTE - the appropriate function.
+
 operators = {
-    # Dictionary syntax:  "key" : "value"
-    #   i.e. "function" : operator.<function>
-    
-    "+" : operator.add,
-    "-" : operator.sub,
-    "/" : operator.truediv,
-    "*" : operator.mul
+    "+"  : operator.add,
+    "-"  : operator.sub,
+    "/"  : operator.truediv,
+    "*"  : operator.mul,
+    "%"  : operator.mod,
+    "**" : operator.pow,
+    ">>" : operator.rshift,
+    "<<" : operator.lshift
 }
     
 
@@ -89,9 +96,17 @@ def get_user_input():
                         (None, None, None) if inputs invalid
     """
     try:
-        num1 = float(input("Enter first number: "))
-        num2 = float(input("Enter second number: "))
-        op   = input("Enter operation (+, -, *, /): ")
+        num1 = input("Enter first number: ")
+        num2 = input("Enter second number: ")
+        op = input("Enter operation (+, -, *, /, %, **, >>, <<): ")
+
+        # Shift operators require integers
+        if (op == ">>") or (op == "<<"):
+            num1 = int(num1)
+            num2 = int(num2)
+        else:
+            num1 = float(num1)
+            num2 = float(num2)
 
         func = operators.get(op)
 
