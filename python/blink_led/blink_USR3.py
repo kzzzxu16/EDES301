@@ -4,7 +4,11 @@
 Blink USR3 LED
 --------------------------------------------------------------------------
 License:   
-Copyright 2026 - <NAME>
+Author: Kathy Xu
+Contact: kx16@rice.edu
+Copyright 2026 - Kathy Xu
+Organization: Rice University
+License: BSD 3-Clause
 
 Redistribution and use in source and binary forms, with or without 
 modification, are permitted provided that the following conditions are met:
@@ -35,6 +39,8 @@ THE POSSIBILITY OF SUCH DAMAGE.
 --------------------------------------------------------------------------
 
 Blink the PocketBeagle USR3 LED at 5 Hz.
+The LED remains ON for 0.1 seconds and OFF for 0.1 seconds,
+resulting in 5 complete on/off cycles per second.
 
 --------------------------------------------------------------------------
 """
